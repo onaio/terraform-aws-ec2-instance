@@ -30,7 +30,7 @@ output "public_ip" {
 
 output "network_interface_id" {
   description = "List of IDs of the network interface of instances"
-  value       = ["${aws_instance.ec2-instance.*.network_interface_id}"]
+  value       = ["${aws_instance.ec2-instance.*.network_interface}"]
 }
 
 output "primary_network_interface_id" {
