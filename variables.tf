@@ -100,7 +100,7 @@ variable "vpc_security_group_ids" {
 variable "private_ip" {
   description = "Private IP address to associate with the instance in a VPC"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "private_ips" {
