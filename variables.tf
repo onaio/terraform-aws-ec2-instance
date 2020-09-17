@@ -109,8 +109,26 @@ variable "private_ips" {
   default     = []
 }
 
+variable "public_ip" {
+  description = "Public IP address to assign to the instance"
+  type        = string
+  default     = null
+}
+
+variable "public_ips" {
+  description = "A list of public IP addresses to assign to the instances. Should match the number of instances."
+  type        = list
+  default     = []
+}
+
 variable "assign_elastic_ip" {
   description = "Should we use an elastic IP with the instance?"
+  default     = false
+}
+
+variable "allow_eip_reassociation" {
+  description = "Whether to allow an Elastic IP to be re-associated"
+  type        = bool
   default     = false
 }
 

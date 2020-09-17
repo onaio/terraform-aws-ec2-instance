@@ -19,6 +19,15 @@ resource "aws_eip" "instance_eip" {
   depends_on = [aws_instance.ec2-instance]
 }
 
+resource "aws_eip_association" "eip_assoc" {
+  count               = var.assign_elastic_ip ? var.server_count : 0
+  instance_id         = aws_instance.ec2-instance[count.index].id
+  allocation_id       = aws_eip.instance_eip[count.index].id
+  allow_reassociation = var.allow_eip_reassociation
+  public_ip           = length(var.public_ips) > 0 ? element(var.public_ips, count.index) : var.public_ip
+  private_ip_address  = length(var.private_ips) > 0 ? element(var.private_ips, count.index) : var.private_ip
+}
+
 resource "aws_security_group" "sg" {
   count                  = var.create_security_group ? 1 : 0
   name_prefix            = format("%s-%s-", var.project_id, var.deployed_app)
