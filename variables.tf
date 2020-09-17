@@ -78,7 +78,7 @@ variable "server_volume_size" {
 }
 
 variable "associate_public_ip_address" {
-  description = "Whether to asssociat a public IP address to this instance"
+  description = "Whether to asssociate a public IP address to this instance"
   default     = true
 }
 
