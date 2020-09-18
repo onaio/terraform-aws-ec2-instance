@@ -78,7 +78,7 @@ variable "server_volume_size" {
 }
 
 variable "associate_public_ip_address" {
-  description = "Whether to asssociat a public IP address to this instance"
+  description = "Whether to asssociate a public IP address to this instance"
   default     = true
 }
 
@@ -100,7 +100,7 @@ variable "vpc_security_group_ids" {
 variable "private_ip" {
   description = "Private IP address to associate with the instance in a VPC"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "private_ips" {
