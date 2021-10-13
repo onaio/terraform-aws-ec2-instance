@@ -54,7 +54,7 @@ variable "devops_client" {
 
 variable "server_monitoring_playbook" {
   description = "The server setup playbook file name. This is the first playbook used to setup basic monitoring and authentication"
-  default     = "server-setup.yml"
+  default     = "ansible/server-setup.yml"
 }
 
 variable "server_count" {
