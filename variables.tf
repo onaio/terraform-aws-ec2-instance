@@ -94,7 +94,7 @@ variable "vault_password_file" {
 
 variable "vpc_security_group_ids" {
   description = "Security groups to attach to the instance"
-  type        = list
+  type        = list(any)
 }
 
 variable "private_ip" {
@@ -105,7 +105,7 @@ variable "private_ip" {
 
 variable "private_ips" {
   description = "A list of private IP address to associate with the instance in a VPC. Should match the number of instances."
-  type        = list
+  type        = list(any)
   default     = []
 }
 
@@ -117,7 +117,7 @@ variable "public_ip" {
 
 variable "public_ips" {
   description = "A list of public IP addresses to assign to the instances. Should match the number of instances."
-  type        = list
+  type        = list(any)
   default     = []
 }
 
