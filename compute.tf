@@ -3,7 +3,7 @@ resource "aws_instance" "ec2-instance" {
   ami           = var.server_ami
   instance_type = var.server_instance_type
   key_name      = var.ssh_key_name
-  subnet_id     = length(var.instance_subnet_id) > 0 ? var.instance_subnet_id : element(tolist(data.aws_subnet_ids.all.ids), count.index)
+  subnet_id     = length(var.instance_subnet_id) > 0 ? var.instance_subnet_id : element(tolist(data.aws_subnets.all.ids), count.index)
   # "distinct" seems to prevent change-detection of new vpc_security_group_ids
   vpc_security_group_ids      = distinct(concat(data.aws_security_group.default.*.id, aws_security_group.sg.*.id, var.vpc_security_group_ids))
   private_ip                  = length(var.private_ips) > 0 ? element(var.private_ips, count.index) : var.private_ip
