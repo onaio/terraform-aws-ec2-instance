@@ -59,7 +59,7 @@ resource "null_resource" "server-setup" {
   }
 
   provisioner "local-exec" {
-    command = "sleep 30 && cd ${var.playbooks_root_dir} && ansible-playbook -i ansible/inventories/${var.devops_client}/${var.env} ${var.server_monitoring_playbook} -e ansible_host=${aws_instance.ec2-instance[count.index].public_ip} -e ansible_ssh_user=ubuntu -e ssh_local_user=$USER -e server_monitoring_set_hostname=true -e hostname_from_ec2_Name_tag=false -e server_monitoring_hostname=${var.project_id}-${var.deployed_app}-${var.env} -e server_monitoring_hostname_from_ec2_Name_tag=False --vault-password-file ${var.vault_password_file} --limit ${aws_instance.ec2-instance[count.index][var.playbooks_inventory_type]}"
+    command = "sleep 30 && cd ${var.playbooks_root_dir} && ansible-playbook -i ansible/inventories/${var.devops_client}/${var.env} ansible/${var.server_monitoring_playbook} -e ansible_host=${aws_instance.ec2-instance[count.index].public_ip} -e ansible_ssh_user=ubuntu -e ssh_local_user=$USER -e server_monitoring_set_hostname=true -e hostname_from_ec2_Name_tag=false -e server_monitoring_hostname=${var.project_id}-${var.deployed_app}-${var.env} -e server_monitoring_hostname_from_ec2_Name_tag=False --vault-password-file ${var.vault_password_file} --limit ${aws_instance.ec2-instance[count.index][var.playbooks_inventory_type]}"
   }
 }
 
