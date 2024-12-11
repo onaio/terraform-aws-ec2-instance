@@ -3,6 +3,11 @@ variable "region" {
   default     = "eu-west-1" # Ireland
 }
 
+variable "storage_class" {
+  description = "Storage class"
+  default     = "gp2"
+}
+
 variable "env" {
   description = "The deployment environment this instance belongs to. Possible values: stage, preview, production"
   default     = "stage"

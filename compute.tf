@@ -14,7 +14,7 @@ resource "aws_instance" "ec2-instance" {
   iam_instance_profile        = var.iam_instance_profile
 
   root_block_device {
-    volume_type           = "gp2"
+    volume_type           = var.storage_class
     volume_size           = var.server_volume_size
     delete_on_termination = var.delete_volume_on_instance_termination
   }
