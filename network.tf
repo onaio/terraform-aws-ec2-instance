@@ -19,7 +19,7 @@ data "aws_security_group" "default" {
 resource "aws_eip" "instance_eip" {
   count      = var.assign_elastic_ip ? var.server_count : 0
   instance   = aws_instance.ec2-instance[count.index].id
-  vpc        = true
+  domain     = "vpc"
   depends_on = [aws_instance.ec2-instance]
 }
 
